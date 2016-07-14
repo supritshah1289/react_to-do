@@ -1,4 +1,10 @@
 'use strict'
+const env         = process.env.NODE_ENV || 'development';
+const DEV         = env==='development';
+const dotenv      = (DEV) ? require('dotenv').config() : undefined;
+
+
+
 const express     = require('express')
 const path        = require('path')
 const logger      = require('morgan')
@@ -8,9 +14,11 @@ const app         = express()
 const taskRoutes  = require('./routes/tasks.js')
 
 
+
+
 app.use(logger('dev'))
 app.use(express.static(path.join(__dirname,'public')))
-
+app.use(bodyParser.json())
 
 
 

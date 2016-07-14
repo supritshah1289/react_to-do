@@ -1,23 +1,21 @@
 'use strict'
 const  tasks         = require('express').Router();
-
-const taskData = []
-//const sendString = (req, res)=>res.send(`Deleted one ${req.params.id}`)
+const db    = require('../models/task')
 
 
+//const sendString = (req, res)=>res.send(`Deleted one ${req.params.taskID}`)
+const sendJSONresp = (req, res)=>res.json(res.rows)
 
-tasks.route('/:id')
-    .get((req, res)=>res.send(`Show tasks ${req.params.id}`))
-    .put((req, res)=>res.send(`Edited one ${req.params.id}`))
-    .delete((req, res)=>res.send(`Deleted one ${req.params.id}`))
+
+tasks.route('/:taskID')
+    .put(db.updateTask, sendJSONresp)
+    .delete(db.deleteTask, (req, res)=>res.send(req.params.taskID))
 
 
 
 tasks.route('/')
-    .get((req, res)=>res.send('Show tasks'))
-    .post((req, res)=>res.send('Posted new taks'))
-
-
+    .get(db.getTasks, sendJSONresp)
+    .post(db.addTask, sendJSONresp)
 
 
 
