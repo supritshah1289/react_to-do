@@ -1,10 +1,11 @@
 import React from 'react';
+require('../images/GA_Stack_Small_RedBlack_RGB.png')
 
-const Nav = props=>(
+const Footer = props=>(
 <footer className="page-footer orange">
   <div className="footer-copyright">
     <div className="container">
-      <p>Made with <span class="glyphicon glyphicon-heart"></span> by students of General Assembly</p>
+      <p>Made with <span className="glyphicon glyphicon-heart"></span> by students of <span className='gaLogo'> </span></p>
     </div>
   </div>
 </footer>
