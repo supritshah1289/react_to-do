@@ -4,6 +4,7 @@
 import React            from 'react';
 import ReactDOM         from 'react-dom'
 import Nav              from './nav.jsx'
+import Footer           from './footer.jsx'
 
 // create a React Component called _App_
 export default class App extends React.Component{
@@ -36,6 +37,7 @@ export default class App extends React.Component{
                     {/*everything goes in here*/}
                     </div>
                 </div>
+                <Footer />
             </container>
         )
     }
