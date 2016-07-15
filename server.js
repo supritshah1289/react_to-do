@@ -9,22 +9,23 @@ const express     = require('express')
 const path        = require('path')
 const logger      = require('morgan')
 const bodyParser  = require('body-parser')
-const PORT        = process.env.PORT ||3009
+const PORT        = process.env.PORT ||3000
 const app         = express()
 const taskRoutes  = require('./routes/tasks.js')
 
 
 
 
-app.use(logger('dev'))
-app.use(express.static(path.join(__dirname,'public')))
+app.use(logger(DEV ? 'dev' : 'common'))
+// app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname,'dist')))
 app.use(bodyParser.json())
 
 
 
-app.get('/', (req, res)=>{
-  res.send('Hello Home')
-})
+// app.get('/', (req, res)=>{
+//   res.send('Hello Home')
+// })
 
 app.use('/tasks', taskRoutes);
 
